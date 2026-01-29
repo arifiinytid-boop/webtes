@@ -1,1 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIINYT - Official Links</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            overflow-x: hidden;
+        }
+
+        /* Animasi Background Bergerak */
+        .animated-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Efek Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Animasi Tombol */
+        .link-btn {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .link-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .link-btn:hover::after {
+            left: 100%;
+        }
+
+        /* Avatar Glow & Animasi */
+        .avatar-container {
+            position: relative;
+        }
+        
+        .avatar-img {
+            border: 4px solid rgba(255,255,255,0.1);
+            transition: transform 0.5s, border-color 0.3s;
+            object-fit: cover; /* Memastikan gambar tidak gepeng */
+        }
+        
+        .avatar-container:hover .avatar-img {
+            transform: rotate(10deg) scale(1.05);
+            border-color: #6366f1;
+        }
+
+        /* Verified Badge Animation */
+        .verified-badge {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen flex items-center justify-center p-4">
+
+    <!-- Background Animasi -->
+    <div class="animated-bg"></div>
+
+    <!-- Kontainer Utama -->
+    <div class="glass-card w-full max-w-md p-8 rounded-3xl shadow-2xl relative z-10 flex flex-col items-center border-t border-white/20">
+        
+        <!-- Bagian Profil -->
+        <div class="avatar-container mb-4 relative group cursor-pointer">
+            
+            <!-- GANTI LINK FOTO DI SINI (src="...") -->
+            <!-- Saya pakai gambar Minecraft render sebagai contoh -->
+            <img src="profile.png" 
+                 alt="FIINYT Profile" 
+                 class="avatar-img w-32 h-32 rounded-full shadow-2xl mx-auto bg-gray-800">
+                 
+            <!-- Badge Online -->
+            <div class="absolute bottom-1 right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-[#0f172a] z-20" title="Online"></div>
+        </div>
+
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold tracking-wide flex items-center justify-center gap-2">
+                FiiNyT 
+                <i class="fas fa-check-circle text-blue-400 text-xl verified-badge" title="Verified Creator"></i>
+            </h1>
+            <p class="text-indigo-300 font-medium text-sm mt-1">@fiinyt_id</p>
+            <p class="text-gray-400 text-xs mt-2 px-6">Content Creator | MCPE Addons & Maps | Gamer</p>
+        </div>
+
+        <!-- Daftar Link -->
+        <div class="w-full space-y-4">
+
+            <!-- YouTube -->
+            <a href="https://youtube.com/@fiinyt_id?si=Wj6YjJb2pguxCm2m" target="_blank" class="link-btn flex items-center bg-gradient-to-r from-red-600 to-red-800 text-white py-4 px-5 rounded-2xl w-full group shadow-lg shadow-red-900/20">
+                <div class="text-3xl mr-4 w-10 text-center">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <div class="flex-1 text-left">
+                    <h3 class="font-bold text-lg leading-tight">YouTube</h3>
+                    <p class="text-[10px] text-red-200 uppercase tracking-wider">Subscribe Sekarang</p>
+                </div>
+                <i class="fas fa-external-link-alt text-sm opacity-50 group-hover:opacity-100 transition-opacity"></i>
+            </a>
+
+            <!-- MCPEDL -->
+            <a href="https://mcpedl.com/user/fiinyt/" target="_blank" class="link-btn flex items-center bg-gradient-to-r from-green-700 to-green-900 text-white py-4 px-5 rounded-2xl w-full group shadow-lg shadow-green-900/20">
+                <div class="text-3xl mr-4 w-10 text-center">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <div class="flex-1 text-left">
+                    <h3 class="font-bold text-lg leading-tight">MCPEDL</h3>
+                    <p class="text-[10px] text-green-200 uppercase tracking-wider">Download Addons & Maps</p>
+                </div>
+                <i class="fas fa-external-link-alt text-sm opacity-50 group-hover:opacity-100 transition-opacity"></i>
+            </a>
+
+            <!-- Discord -->
+            <a href="https://discord.gg/3RNYc4YEK" target="_blank" class="link-btn flex items-center bg-gradient-to-r from-[#5865F2] to-[#404EED] text-white py-4 px-5 rounded-2xl w-full group shadow-lg shadow-indigo-900/20">
+                <div class="text-3xl mr-4 w-10 text-center">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <div class="flex-1 text-left">
+                    <h3 class="font-bold text-lg leading-tight">Discord Server</h3>
+                    <p class="text-[10px] text-indigo-200 uppercase tracking-wider">Gabung Komunitas</p>
+                </div>
+                <i class="fas fa-external-link-alt text-sm opacity-50 group-hover:opacity-100 transition-opacity"></i>
+            </a>
+
+            <!-- WhatsApp Channel -->
+            <a href="https://whatsapp.com/channel/0029VbAaKqKAO7RIwwxoou3J" target="_blank" class="link-btn flex items-center bg-gradient-to-r from-emerald-500 to-teal-700 text-white py-4 px-5 rounded-2xl w-full group shadow-lg shadow-emerald-900/20">
+                <div class="text-3xl mr-4 w-10 text-center">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div class="flex-1 text-left">
+                    <h3 class="font-bold text-lg leading-tight">Info Update</h3>
+                    <p class="text-[10px] text-emerald-100 uppercase tracking-wider">Saluran WhatsApp</p>
+                </div>
+                <i class="fas fa-external-link-alt text-sm opacity-50 group-hover:opacity-100 transition-opacity"></i>
+            </a>
+
+            <!-- WhatsApp Chat -->
+            <a href="https://wa.me/+6282220960848?text=*Halo+Bang+Saya+Ingin+Bertanya*😁😊" target="_blank" class="link-btn flex items-center bg-white/10 hover:bg-white/20 text-white py-4 px-5 rounded-2xl w-full group border border-white/10">
+                <div class="text-3xl mr-4 w-10 text-center text-green-400">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="flex-1 text-left">
+                    <h3 class="font-bold text-lg leading-tight">Kontak Admin</h3>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-wider">Butuh Bantuan?</p>
+                </div>
+                <i class="fas fa-comment-dots text-sm opacity-50 group-hover:opacity-100 transition-opacity"></i>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-10 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fab fa-instagram text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fab fa-tiktok text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fas fa-envelope text-xl"></i></a>
+            </div>
+            <p class="text-gray-500 text-[10px] tracking-widest uppercase">&copy; 2026 FIINYT ID</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+
 
