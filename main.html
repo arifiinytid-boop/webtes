@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FIINYT - Official Hub</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #020617;
@@ -19,209 +22,411 @@
             min-height: 100vh;
         }
 
-        .rajdhani { font-family: 'Rajdhani', sans-serif; }
+        .rajdhani { 
+            font-family: 'Rajdhani', sans-serif; 
+        }
 
-        /* Background Animasi Nebula */
+        /* Enhanced Animated Background */
         .animated-bg {
-            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #020617 100%);
+            background: radial-gradient(ellipse at top, #1e1b4b 0%, #0f172a 40%, #020617 100%);
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
         }
 
         .stars {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: url('https://www.transparenttextures.com/patterns/stardust.png');
-            opacity: 0.3;
-            animation: moveStars 100s linear infinite;
+            opacity: 0.4;
+            animation: moveStars 200s linear infinite;
         }
 
         @keyframes moveStars {
             from { background-position: 0 0; }
-            to { background-position: 1000px 1000px; }
+            to { background-position: 2000px 2000px; }
         }
 
-        /* Glassmorphism Desktop & Mobile */
+        /* Floating Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #6366f1, transparent);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, #a855f7, transparent);
+            bottom: -100px;
+            right: -100px;
+            animation-delay: 5s;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ec4899, transparent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(30px, -30px); }
+            50% { transform: translate(-20px, 20px); }
+            75% { transform: translate(20px, 30px); }
+        }
+
+        /* Enhanced Glassmorphism */
         .glass-card {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
         }
 
-        /* Grid Layout Desktop */
+        /* Desktop Grid Layout */
         @media (min-width: 768px) {
             .links-container {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.25rem;
             }
-            .full-width { grid-column: span 2; }
+            .full-width { 
+                grid-column: span 2; 
+            }
         }
 
-        /* Tombol & Ikon Container */
+        /* Enhanced Link Button */
         .link-btn {
+            position: relative;
+            overflow: hidden;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .link-btn:hover::before {
+            left: 100%;
         }
 
         .link-btn:hover {
-            transform: scale(1.03) translateY(-3px);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: scale(1.04) translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(99, 102, 241, 0.2);
         }
 
-        /* Wadah Ikon Sesuai Gambar Referensi */
+        .link-btn:active {
+            transform: scale(1.02) translateY(-2px);
+        }
+
+        /* Enhanced Icon Box */
         .icon-box {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
             flex-shrink: 0;
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .link-btn:hover .icon-box {
-            transform: scale(1.1);
-            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.15) rotate(5deg);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        /* Animasi Glow Profil */
+        /* Enhanced Avatar with Click Effect */
+        .avatar-container {
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+        }
+
         .avatar-glow {
-            box-shadow: 0 0 25px rgba(99, 102, 241, 0.4);
-            animation: pulseGlow 3s infinite;
+            box-shadow: 
+                0 0 30px rgba(99, 102, 241, 0.5),
+                0 0 60px rgba(168, 85, 247, 0.3);
+            animation: pulseGlow 3s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .avatar-container:hover .avatar-glow {
+            box-shadow: 
+                0 0 40px rgba(99, 102, 241, 0.7),
+                0 0 80px rgba(168, 85, 247, 0.5);
+            transform: scale(1.05);
+        }
+
+        .avatar-container:active .avatar-glow {
+            transform: scale(0.98);
         }
 
         @keyframes pulseGlow {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); }
-            50% { transform: scale(1.02); box-shadow: 0 0 35px rgba(99, 102, 241, 0.6); }
+            0%, 100% { 
+                box-shadow: 
+                    0 0 30px rgba(99, 102, 241, 0.5),
+                    0 0 60px rgba(168, 85, 247, 0.3);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 40px rgba(99, 102, 241, 0.7),
+                    0 0 80px rgba(168, 85, 247, 0.5);
+            }
+        }
+
+        /* Badge Animation */
+        .verified-badge {
+            animation: fadeInScale 0.6s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Online Status Pulse */
+        .online-status {
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { 
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            }
+            50% { 
+                box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+            }
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 640px) {
+            .icon-box {
+                width: 46px;
+                height: 46px;
+            }
+        }
+
+        /* Fast Response Badge Animation */
+        .fast-badge {
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Social Icons Hover */
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-4px) scale(1.1);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
-<body class="text-slate-200 flex flex-col items-center py-8 px-4">
+<body class="text-slate-200 flex flex-col items-center py-8 px-4 sm:py-12">
 
-    <div class="animated-bg"><div class="stars"></div></div>
+    <div class="animated-bg">
+        <div class="stars"></div>
+    </div>
 
-    <!-- Header Profil -->
+    <!-- Floating Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Header Profile -->
     <header class="text-center mb-8 z-10">
-        <div class="relative inline-block mb-4 group">
-            <div class="avatar-glow rounded-full p-1 bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 transition-all duration-500">
+        <a href="https://youtube.com/@fiinyt_id?si=Wj6YjJb2pguxCm2m" 
+           target="_blank" 
+           class="avatar-container inline-block mb-5 group"
+           aria-label="Visit YouTube Channel">
+            <div class="avatar-glow rounded-full p-1 bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500">
                 <img src="profile.png" 
-                     onerror="this.src='https://ui-avatars.com/api/?name=FIINYT&background=6366f1&color=fff&size=128&bold=true'"
+                     onerror="this.src='https://ui-avatars.com/api/?name=FIINYT&background=6366f1&color=fff&size=160&bold=true'"
                      alt="FIINYT Profile" 
-                     class="w-28 h-28 md:w-36 md:h-36 rounded-full border-4 border-[#020617] object-cover">
+                     class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-[#020617] object-cover">
             </div>
-            <div class="absolute bottom-2 right-2 bg-green-500 w-5 h-5 rounded-full border-4 border-[#020617] shadow-lg"></div>
-        </div>
+            <div class="online-status absolute bottom-2 right-2 bg-green-500 w-6 h-6 rounded-full border-4 border-[#020617] shadow-lg"></div>
+        </a>
         
-        <h1 class="rajdhani text-4xl md:text-5xl font-bold tracking-tight text-white">
-            FIINYT <span class="text-indigo-500">ID</span>
-            <i class="fas fa-check-circle text-blue-400 text-xl ml-1 align-middle"></i>
+        <h1 class="rajdhani text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-2">
+            FIINYT <span class="text-indigo-400">ID</span>
+            <i class="verified-badge fas fa-check-circle text-blue-400 text-2xl ml-2 align-middle"></i>
         </h1>
-        <p class="text-indigo-300 font-medium tracking-[0.2em] text-[10px] uppercase mt-1">Minecraft Content Creator</p>
+        <p class="text-indigo-300 font-semibold tracking-[0.25em] text-[11px] sm:text-xs uppercase">
+            Minecraft Content Creator
+        </p>
     </header>
 
-    <!-- Main Container Link -->
-    <main class="glass-card w-full max-w-2xl p-5 md:p-8 rounded-[2rem] z-10">
+    <!-- Main Container -->
+    <main class="glass-card w-full max-w-3xl p-6 md:p-10 rounded-3xl z-10">
         
-        <div class="links-container space-y-3 md:space-y-0">
+        <div class="links-container space-y-4 md:space-y-0">
 
             <!-- YouTube (Full Width) -->
-            <a href="https://youtube.com/@fiinyt_id?si=Wj6YjJb2pguxCm2m" target="_blank" 
-               class="link-btn full-width flex items-center bg-gradient-to-r from-red-600 to-red-700 p-4 rounded-2xl group">
-                <div class="icon-box mr-4">
-                    <i class="fab fa-youtube text-xl text-white"></i>
+            <a href="https://youtube.com/@fiinyt_id?si=Wj6YjJb2pguxCm2m" 
+               target="_blank" 
+               class="link-btn full-width flex items-center bg-gradient-to-r from-red-600 to-red-700 p-5 rounded-2xl group">
+                <div class="icon-box mr-5">
+                    <i class="fab fa-youtube text-2xl text-white"></i>
                 </div>
                 <div class="flex-1">
-                    <span class="block font-bold text-base md:text-lg leading-tight">YouTube Channel</span>
-                    <span class="text-[9px] md:text-[10px] text-red-100 opacity-80 font-bold uppercase tracking-wider">Tonton & Subscribe</span>
+                    <span class="block font-bold text-lg md:text-xl leading-tight text-white">YouTube Channel</span>
+                    <span class="text-[10px] md:text-xs text-red-50 opacity-90 font-bold uppercase tracking-wider">Tonton & Subscribe Sekarang</span>
                 </div>
-                <div class="opacity-30 group-hover:opacity-100 transition-opacity pr-2">
-                    <i class="fas fa-play-circle text-sm"></i>
+                <div class="opacity-40 group-hover:opacity-100 transition-opacity pr-3">
+                    <i class="fas fa-play-circle text-xl"></i>
                 </div>
             </a>
 
             <!-- MCPEDL -->
-            <a href="https://mcpedl.com/user/fiinyt/" target="_blank" 
-               class="link-btn flex items-center bg-[#00875A] p-4 rounded-2xl group">
+            <a href="https://mcpedl.com/user/fiinyt/" 
+               target="_blank" 
+               class="link-btn flex items-center bg-gradient-to-br from-[#00875A] to-[#006644] p-5 rounded-2xl group">
                 <div class="icon-box mr-4">
-                    <i class="fas fa-box text-lg text-white/90"></i>
+                    <i class="fas fa-box text-xl text-white"></i>
                 </div>
                 <div class="flex-1">
-                    <span class="block font-bold text-base">MCPEDL</span>
-                    <span class="text-[9px] text-green-100 opacity-70 uppercase font-bold tracking-wider">Addons & Maps</span>
+                    <span class="block font-bold text-base md:text-lg text-white">MCPEDL</span>
+                    <span class="text-[10px] text-green-50 opacity-80 uppercase font-bold tracking-wider">Addons & Maps</span>
                 </div>
             </a>
 
             <!-- Discord -->
-            <a href="https://discord.gg/3RNYc4YEK" target="_blank" 
-               class="link-btn flex items-center bg-[#5865F2] p-4 rounded-2xl group">
+            <a href="https://discord.gg/3RNYc4YEK" 
+               target="_blank" 
+               class="link-btn flex items-center bg-gradient-to-br from-[#5865F2] to-[#4752C4] p-5 rounded-2xl group">
                 <div class="icon-box mr-4">
-                    <i class="fab fa-discord text-lg text-white"></i>
+                    <i class="fab fa-discord text-xl text-white"></i>
                 </div>
                 <div class="flex-1">
-                    <span class="block font-bold text-base">Discord</span>
-                    <span class="text-[9px] text-indigo-100 opacity-70 uppercase font-bold tracking-wider">Join Community</span>
+                    <span class="block font-bold text-base md:text-lg text-white">Discord</span>
+                    <span class="text-[10px] text-indigo-50 opacity-80 uppercase font-bold tracking-wider">Join Community</span>
                 </div>
             </a>
 
-            <!-- Grup WA -->
-            <a href="https://chat.whatsapp.com/IqhzQ8dMqpHDCpMEusY39e?mode=gi_t" target="_blank" 
-               class="link-btn flex items-center bg-[#25D366] p-4 rounded-2xl group text-white">
-                <div class="icon-box mr-4" style="background: rgba(0,0,0,0.1);">
-                    <i class="fas fa-users text-lg"></i>
+            <!-- Grup WhatsApp -->
+            <a href="https://chat.whatsapp.com/IqhzQ8dMqpHDCpMEusY39e" 
+               target="_blank" 
+               class="link-btn flex items-center bg-gradient-to-br from-[#25D366] to-[#1EBE57] p-5 rounded-2xl group">
+                <div class="icon-box mr-4 bg-black/10">
+                    <i class="fas fa-users text-xl text-white"></i>
                 </div>
                 <div class="flex-1">
-                    <span class="block font-bold text-base">Grup WhatsApp</span>
-                    <span class="text-[9px] text-white/80 uppercase font-bold tracking-wider">Join My Circle</span>
+                    <span class="block font-bold text-base md:text-lg text-white">Grup WhatsApp</span>
+                    <span class="text-[10px] text-white/90 uppercase font-bold tracking-wider">Join My Circle</span>
                 </div>
             </a>
 
-            <!-- Channel WA -->
-            <a href="https://whatsapp.com/channel/0029VbAaKqKAO7RIwwxoou3J" target="_blank" 
-               class="link-btn flex items-center bg-[#128C7E] p-4 rounded-2xl group">
+            <!-- Channel WhatsApp -->
+            <a href="https://whatsapp.com/channel/0029VbAaKqKAO7RIwwxoou3J" 
+               target="_blank" 
+               class="link-btn flex items-center bg-gradient-to-br from-[#128C7E] to-[#0E7A6E] p-5 rounded-2xl group">
                 <div class="icon-box mr-4">
-                    <i class="fas fa-bullhorn text-lg text-white"></i>
+                    <i class="fas fa-bullhorn text-xl text-white"></i>
                 </div>
                 <div class="flex-1">
-                    <span class="block font-bold text-base">Saluran WhatsApp</span>
-                    <span class="text-[9px] text-teal-100 opacity-70 uppercase font-bold tracking-wider">Official Updates</span>
+                    <span class="block font-bold text-base md:text-lg text-white">Saluran WhatsApp</span>
+                    <span class="text-[10px] text-teal-50 opacity-80 uppercase font-bold tracking-wider">Official Updates</span>
                 </div>
             </a>
 
             <!-- Chat Admin (Full Width) -->
-            <a href="https://wa.me/+6282220960848?text=*Halo+Bang+Saya+Ingin+Bertanya*😁😊" target="_blank" 
-               class="link-btn full-width flex items-center bg-slate-800/80 p-4 rounded-2xl border border-indigo-500/20 group">
-                <div class="icon-box mr-4 bg-indigo-500/20">
-                    <i class="fab fa-whatsapp text-lg text-indigo-400"></i>
+            <a href="https://wa.me/6282220960848?text=*Halo+Bang+Saya+Ingin+Bertanya*😁😊" 
+               target="_blank" 
+               class="link-btn full-width flex items-center bg-gradient-to-r from-slate-800/90 to-slate-700/90 p-5 rounded-2xl border-2 border-indigo-500/30 group">
+                <div class="icon-box mr-5 bg-indigo-500/25">
+                    <i class="fab fa-whatsapp text-2xl text-indigo-300"></i>
                 </div>
                 <div class="flex-1">
-                    <span class="block font-bold text-white text-base">Hubungi Admin</span>
-                    <span class="text-[9px] text-slate-400 uppercase font-bold tracking-wider">Tanya Sesuatu? Chat Sini</span>
+                    <span class="block font-bold text-white text-lg md:text-xl">Hubungi Admin</span>
+                    <span class="text-[10px] md:text-xs text-slate-300 uppercase font-bold tracking-wider">Tanya Sesuatu? Chat Disini</span>
                 </div>
-                <div class="hidden md:block text-[9px] font-bold text-indigo-400 border border-indigo-400/50 px-2 py-1 rounded">FAST RESPOND</div>
+                <div class="fast-badge hidden sm:block text-[10px] font-bold text-indigo-300 border-2 border-indigo-400/60 px-3 py-1.5 rounded-lg bg-indigo-500/10">
+                    FAST RESPOND
+                </div>
             </a>
 
         </div>
 
         <!-- Social Icons & Footer -->
-        <div class="mt-8 pt-6 border-t border-white/5 text-center">
-            <div class="flex justify-center space-x-6 mb-4 text-slate-400">
-                <a href="#" class="hover:text-indigo-400 transition-colors"><i class="fab fa-instagram text-xl"></i></a>
-                <a href="#" class="hover:text-pink-400 transition-colors"><i class="fab fa-tiktok text-xl"></i></a>
-                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-facebook text-xl"></i></a>
+        <div class="mt-10 pt-8 border-t border-white/10 text-center">
+            <div class="flex justify-center space-x-8 mb-6">
+                <a href="#" class="social-icon text-slate-400 hover:text-pink-400 transition-all" aria-label="Instagram">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+                <a href="#" class="social-icon text-slate-400 hover:text-white transition-all" aria-label="TikTok">
+                    <i class="fab fa-tiktok text-2xl"></i>
+                </a>
+                <a href="#" class="social-icon text-slate-400 hover:text-blue-400 transition-all" aria-label="Facebook">
+                    <i class="fab fa-facebook text-2xl"></i>
+                </a>
             </div>
-            <p class="text-slate-500 text-[9px] tracking-[0.4em] font-bold">&copy; 2026 FIINYT ID</p>
+            <p class="text-slate-500 text-[10px] tracking-[0.5em] font-bold uppercase">
+                &copy; 2026 FIINYT ID
+            </p>
         </div>
     </main>
 
-    <!-- Dekorasi Background -->
-    <div class="fixed top-0 left-1/4 w-72 h-72 bg-indigo-600/10 blur-[120px] -z-10"></div>
+</body>
+</html>h-72 bg-indigo-600/10 blur-[120px] -z-10"></div>
     <div class="fixed bottom-0 right-1/4 w-72 h-72 bg-purple-600/10 blur-[120px] -z-10"></div>
 
 </body>
